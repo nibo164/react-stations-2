@@ -28,7 +28,11 @@ const ThreadList = () => {
       ) : (
         <button disabled>前の10件</button>
       )}
-      <button onClick={() => setOffset(Offset + 10)}>次の10件</button>
+      {ThreadList.length == 10 ? (
+        <button onClick={() => setOffset(Offset + 10)}>次の10件</button>
+      ) : (
+        <button disabled>次の10件</button>
+      )}
     </>
   );
 };
