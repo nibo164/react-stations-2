@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const MakeThreadMenu = () => {
   const handleSubmit = (formData) => {
     fetch("https://railway.bulletinboard.techtrain.dev/threads", {
@@ -23,6 +25,9 @@ const MakeThreadMenu = () => {
         <input type="text" name="title" placeholder="スレッドタイトル" />
         <button type="submit">作成</button>
       </form>
+      <Link to="/">
+        <button>Topに戻る</button>
+      </Link>
     </>
   );
 };
