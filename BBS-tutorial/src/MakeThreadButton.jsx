@@ -1,7 +1,11 @@
+import { Link } from "react-router-dom";
+
 const MakeThreadButton = () => {
   return (
     <>
-      <button className="make-thread-button">スレッドをたてる</button>
+      <Link to="/threads/new">
+        <button className="make-thread-button">スレッドをたてる</button>
+      </Link>
     </>
   );
 };
