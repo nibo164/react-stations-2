@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 const ThreadList = () => {
   const [ThreadList, setThreadList] = useState([]);
   const [Offset, setOffset] = useState(0);
@@ -19,10 +20,19 @@ const ThreadList = () => {
       <ul>
         {ThreadList.map((thread) => (
           <li key={thread.id}>
-            <p>{thread.title}</p>
+            <p>
+              {/*stateを利用してThreadコンポーネントへtitleを渡す*/}
+              <Link
+                to={"/threads/" + thread.id}
+                state={{ title: thread.title }}
+              >
+                {thread.title}
+              </Link>
+            </p>
           </li>
         ))}
       </ul>
+
       {Offset > 0 ? (
         <button onClick={() => setOffset(Offset - 10)}>前の10件</button>
       ) : (
