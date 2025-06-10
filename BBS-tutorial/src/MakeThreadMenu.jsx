@@ -13,10 +13,11 @@ const MakeThreadMenu = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("success:", data);
+        console.log("Thread make success:", data);
+        event.target.reset();
       })
       .catch((error) => {
-        console.error("Error:", error);
+        console.error("Error maiking thread:", error);
       });
   };
 
