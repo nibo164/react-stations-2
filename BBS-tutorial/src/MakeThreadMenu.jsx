@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 
 const MakeThreadMenu = () => {
-  const handleSubmit = (formData) => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
     fetch("https://railway.bulletinboard.techtrain.dev/threads", {
       method: "POST",
       headers: {
@@ -11,17 +13,18 @@ const MakeThreadMenu = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("success:", data);
+        console.log("Thread make success:", data);
+        event.target.reset();
       })
       .catch((error) => {
-        console.error("Error:", error);
+        console.error("Error maiking thread:", error);
       });
   };
 
   return (
     <>
       <h2>スレッド新規作成</h2>
-      <form action={handleSubmit} method="post">
+      <form onSubmit={handleSubmit}>
         <input type="text" name="title" placeholder="スレッドタイトル" />
         <button type="submit">作成</button>
       </form>

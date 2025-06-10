@@ -10,8 +10,11 @@ const ThreadList = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        console.log("Thread list fetch success:", data);
         setThreadList(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching thread list:", error);
       });
   }, [Offset]);
   return (
