@@ -22,7 +22,10 @@ const ThreadList = () => {
       <h2 class="text-2xl font-semibold">スレッド一覧</h2>
       <ul class="w-full">
         {ThreadList.map((thread) => (
-          <li key={thread.id} class="bg-white p-2 m-2 rounded-lg shadow-md">
+          <li
+            key={thread.id}
+            class="bg-white p-2 m-2 rounded-lg shadow-md border-1 border-stone-500 hover:shadow-lg hover:border-1 hover:border-orange-500"
+          >
             {/*stateを利用してThreadコンポーネントへtitleを渡す*/}
             <Link
               to={"/threads/" + thread.id}
