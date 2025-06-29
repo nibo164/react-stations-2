@@ -18,11 +18,11 @@ const ThreadList = () => {
       });
   }, [Offset]);
   return (
-    <>
-      <h2>スレッド一覧</h2>
-      <ul>
+    <div class="w-3/5 h-full mx-auto my-4">
+      <h2 class="text-2xl font-semibold">スレッド一覧</h2>
+      <ul class="w-full">
         {ThreadList.map((thread) => (
-          <li key={thread.id}>
+          <li key={thread.id} class="bg-white p-2 m-2 rounded-lg shadow-md">
             <p>
               {/*stateを利用してThreadコンポーネントへtitleを渡す*/}
               <Link
@@ -35,32 +35,39 @@ const ThreadList = () => {
           </li>
         ))}
       </ul>
-
-      {Offset > 0 ? (
-        <button
-          class="bg-orange-500 text-white"
-          onClick={() => setOffset(Offset - 10)}
-        >
-          前の10件
-        </button>
-      ) : (
-        <button class="bg-orange-100 text-white" disabled>
-          前の10件
-        </button>
-      )}
-      {ThreadList.length == 10 ? (
-        <button
-          class="bg-orange-500 text-white"
-          onClick={() => setOffset(Offset + 10)}
-        >
-          次の10件
-        </button>
-      ) : (
-        <button class="bg-orange-100 text-white" disabled>
-          次の10件
-        </button>
-      )}
-    </>
+      <div class="flex justify-between">
+        {Offset > 0 ? (
+          <button
+            class="text-lg text-white bg-orange-500 hover:bg-orange-600 p-2 m-2 rounded-lg"
+            onClick={() => setOffset(Offset - 10)}
+          >
+            前の10件
+          </button>
+        ) : (
+          <button
+            class="text-lg text-white bg-orange-200 p-2 m-2 rounded-lg"
+            disabled
+          >
+            前の10件
+          </button>
+        )}
+        {ThreadList.length == 10 ? (
+          <button
+            class="text-lg text-white bg-orange-500 hover:bg-orange-600 p-2 m-2 rounded-lg"
+            onClick={() => setOffset(Offset + 10)}
+          >
+            次の10件
+          </button>
+        ) : (
+          <button
+            class="text-lg text-white bg-orange-200 p-2 m-2 rounded-lg"
+            disabled
+          >
+            次の10件
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 
