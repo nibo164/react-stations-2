@@ -23,15 +23,14 @@ const ThreadList = () => {
       <ul class="w-full">
         {ThreadList.map((thread) => (
           <li key={thread.id} class="bg-white p-2 m-2 rounded-lg shadow-md">
-            <p>
-              {/*stateを利用してThreadコンポーネントへtitleを渡す*/}
-              <Link
-                to={"/threads/" + thread.id}
-                state={{ title: thread.title }}
-              >
-                {thread.title}
-              </Link>
-            </p>
+            {/*stateを利用してThreadコンポーネントへtitleを渡す*/}
+            <Link
+              to={"/threads/" + thread.id}
+              state={{ title: thread.title }}
+              class="block"
+            >
+              {thread.title}
+            </Link>
           </li>
         ))}
       </ul>
