@@ -31,31 +31,55 @@ const Thread = () => {
   }, [Offset]);
 
   return (
-    <>
-      <h2>{title}</h2>
-      <ul>
+    <div class="w-3/5 h-full mx-auto my-4">
+      <h2 class="text-2xl font-semibold">{title}</h2>
+      <ul class="w-full min-h-2/5 bg-white p-2 m-2 rounded-lg shadow-md border-1 border-stone-500">
         {PostList.posts.map((post) => (
           <li key={post.id}>
             <p>{post.post}</p>
           </li>
         ))}
       </ul>
-      {Offset > 0 ? (
-        <button onClick={() => setOffset(Offset - 10)}>前の10件</button>
-      ) : (
-        <button disabled>前の10件</button>
-      )}
-      {PostList.length == 10 ? (
-        <button onClick={() => setOffset(Offset + 10)}>次の10件</button>
-      ) : (
-        <button disabled>次の10件</button>
-      )}
+      <div class="flex justify-between">
+        {Offset > 0 ? (
+          <button
+            class="text-lg text-white bg-orange-500 hover:bg-orange-600 p-2 m-2 rounded-lg"
+            onClick={() => setOffset(Offset - 10)}
+          >
+            前の10件
+          </button>
+        ) : (
+          <button
+            class="text-lg text-white bg-orange-200 p-2 m-2 rounded-lg"
+            disabled
+          >
+            前の10件
+          </button>
+        )}
+        {PostList.length == 10 ? (
+          <button
+            class="text-lg text-white bg-orange-500 hover:bg-orange-600 p-2 m-2 rounded-lg"
+            onClick={() => setOffset(Offset + 10)}
+          >
+            次の10件
+          </button>
+        ) : (
+          <button
+            class="text-lg text-white bg-orange-200 p-2 m-2 rounded-lg"
+            disabled
+          >
+            次の10件
+          </button>
+        )}
+      </div>
       {/*新規投稿時の更新のため、propsでthread_id,fetchPostsを渡す*/}
       <PostForm thread_id={thread_id} fetchPosts={fetchPosts}></PostForm>
       <Link to="/">
-        <button>Topに戻る</button>
+        <button class="text-lg text-white bg-orange-500 hover:bg-orange-600 p-2 m-2 rounded-lg">
+          Topに戻る
+        </button>
       </Link>
-    </>
+    </div>
   );
 };
 
